@@ -23,19 +23,11 @@ public class ItemRegistry {
 	@GameRegistry.ObjectHolder("wahpoc:choco_bar")
 	public static ItemBase chocoBar;
 		
-	private static void registerItem(IForgeRegistry registry, Item item, String folderLocation) {
-		registry.register(item);
-		itemRegistryMap.put(item, folderLocation);
-	}
-	
-	private static void registerItemRender(Item item, String folderLocation) {
-		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(new ResourceLocation("wahpoc:" + folderLocation + item.getRegistryName().getResourcePath()), "inventory"));
-	}
-	
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event)
 	{
 		IForgeRegistry<Item> registry = event.getRegistry();
+		
 		registerItem(registry, new ItemBase("choco_bar", WahPocTab.wahpocbase), "");
 	}
 	
@@ -44,5 +36,14 @@ public class ItemRegistry {
 		for (Map.Entry<Item, String> itemEntry : itemRegistryMap.entrySet()) {
 			registerItemRender(itemEntry.getKey(), itemEntry.getValue());
 		}
+	}
+	
+	private static void registerItem(IForgeRegistry registry, Item item, String folderLocation) {
+		registry.register(item);
+		itemRegistryMap.put(item, folderLocation);
+	}
+	
+	private static void registerItemRender(Item item, String folderLocation) {
+		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(new ResourceLocation("wahpoc:" + folderLocation + item.getRegistryName().getResourcePath()), "inventory"));
 	}
 }

@@ -6,7 +6,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import wahpoc.mod.Main;
-import wahpoc.mod.util.IHasModel;
 
 
 public class BlockBase extends Block
