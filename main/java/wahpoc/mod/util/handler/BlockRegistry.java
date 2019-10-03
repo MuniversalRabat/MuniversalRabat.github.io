@@ -1,0 +1,58 @@
+package wahpoc.mod.util.handler;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.registries.IForgeRegistry;
+import wahpoc.mod.objects.blocks.BlockBase;
+import wahpoc.mod.tabs.WahPocTab;
+
+@Mod.EventBusSubscriber
+public class BlockRegistry {
+	private static final HashMap<Item, String> itemBlockRegistryMap = new HashMap<Item, String>();
+	
+	@GameRegistry.ObjectHolder("wahpoc:choco_block")
+	public static BlockBase chocoBlock;
+	
+	@SubscribeEvent
+	public static void registerBlocks(RegistryEvent.Register<Block> event) {
+		IForgeRegistry<Block> registry = event.getRegistry();
+		
+		registerBlock(registry, new BlockBase("choco_block", Material.CAKE, WahPocTab.wahpocblock), "");
+	}
+	
+	@SubscribeEvent
+	public static void registerItemBlocks(RegistryEvent.Register<Item> event) {
+		for (Item itemBlock : itemBlockRegistryMap.keySet()) {
+			event.getRegistry().register(itemBlock);
+		}
+	}
+	
+	@SubscribeEvent
+	public static void registerItemModels(ModelRegistryEvent event) {
+		for (Map.Entry<Item, String> itemEntry: itemBlockRegistryMap.entrySet()) {
+			registerItemRender(itemEntry.getKey(), itemEntry.getValue());
+		}
+	}
+	
+	private static void registerBlock(IForgeRegistry registry, Block block, String folderLocation) {
+		registry.register(block);
+		itemBlockRegistryMap.put(ItemBlock.getItemFromBlock(block).setRegistryName(block.getRegistryName()), folderLocation);
+	}
+	
+	private static void registerItemRender(Item item, String folderLocation) {
+		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(new ResourceLocation("wahpoc:" + folderLocation + item.getRegistryName().getResourcePath()), "inventory"));
+	}
+}
