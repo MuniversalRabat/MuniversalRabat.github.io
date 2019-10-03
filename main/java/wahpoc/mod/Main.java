@@ -20,7 +20,7 @@ public class Main
 	public static Main instance;
 	
 	//creative tabs.
-	//public static final CreativeTabs wahpocbase = new WahPocTab("wahpocbase", "wahpoc.png", ItemInit.CHOCO_BAR);
+	public static final CreativeTabs wahpocbase = new WahPocTab("wahpocbase", "wahpoc.png", ItemInit.CHOCO_BAR);
 	public static final CreativeTabs wahpocblock = new WahPocTab("wahpocblock", "wahpoc.png", ItemInit.CHOCO_BAR);
 	
 	@SidedProxy(clientSide = Reference.CLIENT, serverSide = Reference.COMMON)
