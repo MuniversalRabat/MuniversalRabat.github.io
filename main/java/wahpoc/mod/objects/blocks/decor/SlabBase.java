@@ -17,12 +17,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistry;
 
-public class SlabBase extends BlockSlab{
+public abstract class SlabBase extends BlockSlab{
 	public static final PropertyEnum<Variant> VARIANT = PropertyEnum.<Variant>create("variant", Variant.class);
 	private HalfSlabBlock halfBlock;
 
-	public SlabBase(String name, Material material, CreativeTabs tab)
-	{
+	public SlabBase(String name, Material material, CreativeTabs tab) {
 		super(material);
 		setUnlocalizedName(name);
 		setRegistryName("wahpoc:" + (isDouble() ? "double_" : "") + name);
@@ -104,6 +103,14 @@ public class SlabBase extends BlockSlab{
 		@Override
 		public boolean isDouble() {
 			return true;
+		}
+		
+		public DoubleSlabBlock registerHalfSlab(IForgeRegistry<Block> registry) {
+			HalfSlabBlock halfSlab = new SlabBase.HalfSlabBlock(this.getUnlocalizedName().replace"tile.", ""), this.getRegistryName().toString().replace("wahpoc:double_",  ""), this.getMaterial(getDefaultState()));
+			setHalfBlock(halfSlab);
+			registry.register(halfSlab);
+			
+			return this;
 		}
 	}
 	

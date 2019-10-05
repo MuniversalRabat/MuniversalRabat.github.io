@@ -1,7 +1,7 @@
 package wahpoc.mod.tabs;
 
 import net.minecraft.creativetab.CreativeTabs;
-import wahpoc.mod.util.handler.ItemRegistry;
+import wahpoc.mod.util.registration.ItemRegistry;
 
 public class CreativeTabsRegistry {
 	//creative tabs.
