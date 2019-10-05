@@ -104,7 +104,7 @@ public abstract class SlabBase extends BlockSlab{
 		public boolean isDouble() {
 			return true;
 		}
-		
+/*		
 		public DoubleSlabBlock registerHalfSlab(IForgeRegistry<Block> registry) {
 			HalfSlabBlock halfSlab = new SlabBase.HalfSlabBlock(this.getUnlocalizedName().replace"tile.", ""), this.getRegistryName().toString().replace("wahpoc:double_",  ""), this.getMaterial(getDefaultState()));
 			setHalfBlock(halfSlab);
@@ -112,7 +112,9 @@ public abstract class SlabBase extends BlockSlab{
 			
 			return this;
 		}
+*/
 	}
+
 	
 	public static class HalfSlabBlock extends SlabBase {
 		public HalfSlabBlock(String name, Material material, CreativeTabs tab) {

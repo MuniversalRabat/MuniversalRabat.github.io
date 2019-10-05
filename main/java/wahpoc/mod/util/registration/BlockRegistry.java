@@ -17,6 +17,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 import wahpoc.mod.objects.blocks.BlockBase;
+import wahpoc.mod.objects.blocks.decor.SlabBase;
+import wahpoc.mod.objects.blocks.decor.StairsBase;
 import wahpoc.mod.tabs.CreativeTabsRegistry;
 
 @Mod.EventBusSubscriber
@@ -27,6 +29,10 @@ public class BlockRegistry {
 	public static BlockBase chocoBlock;
 	@GameRegistry.ObjectHolder("wahpoc:wafer_planks")
 	public static BlockBase waferPlanks;
+	@GameRegistry.ObjectHolder("wahpoc:wafer_slab")
+	public static SlabBase waferSlab;
+	@GameRegistry.ObjectHolder("wahpoc:wafer_stairs")
+	public static StairsBase waferStairs;
 	
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
@@ -34,6 +40,8 @@ public class BlockRegistry {
 		
 		registerBlock(registry, new BlockBase("choco_block", Material.CAKE, CreativeTabsRegistry.wahpocblock).setLightLevel(15), "");
 		registerBlock(registry, new BlockBase("wafer_planks", Material.WOOD, CreativeTabsRegistry.wahpocblock), "");
+		//registerBlock(registry, new SlabBase("wafer_slab", Material.WOOD, CreativeTabsRegistry.wahpocblock), "");
+		registerBlock(registry, new StairsBase("wafer_stairs", Material.WOOD, CreativeTabsRegistry.wahpocblock, waferPlanks), "");
 	}
 	
 	@SubscribeEvent
