@@ -3,16 +3,13 @@ package wahpoc.mod.tabs;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import wahpoc.mod.util.handler.ItemRegistry;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class WahPocTab extends CreativeTabs
 {
-	//creative tabs.
-	public static final CreativeTabs wahpocbase = new WahPocTab("wahpocbase", "wahpoc.png", ItemRegistry.chocoBar);
-	public static final CreativeTabs wahpocblock = new WahPocTab("wahpocblock", "wahpoc.png", ItemRegistry.chocoBar);
-	
-	private Item toLabel;
-	public WahPocTab(String label, String imageName, Item toLabel)
+	private String toLabel;
+	public WahPocTab(String label, String imageName, String toLabel)
 	{
 		super(label);
 		this.setBackgroundImageName(imageName);
@@ -24,6 +21,6 @@ public class WahPocTab extends CreativeTabs
 	@Override
 	public ItemStack getTabIconItem()
 	{
-		return new ItemStack(this.toLabel);
+		return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("wahpoc", this.toLabel)));
 	}
 }

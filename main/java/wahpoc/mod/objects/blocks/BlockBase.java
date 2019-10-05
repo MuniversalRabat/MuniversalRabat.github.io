@@ -18,4 +18,9 @@ public class BlockBase extends Block
 		setCreativeTab(tab);
 	}
 	
+	@Override
+	public BlockBase setLightLevel(float value) {
+		super.setLightLevel(value);
+		return this;
+	}
 }

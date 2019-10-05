@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 import wahpoc.mod.objects.items.ItemBase;
-import wahpoc.mod.tabs.WahPocTab;
+import wahpoc.mod.tabs.CreativeTabsRegistry;
 
 @Mod.EventBusSubscriber
 public class ItemRegistry {
@@ -28,7 +28,7 @@ public class ItemRegistry {
 	{
 		IForgeRegistry<Item> registry = event.getRegistry();
 		
-		registerItem(registry, new ItemBase("choco_bar", WahPocTab.wahpocbase), "");
+		registerItem(registry, new ItemBase("choco_bar", CreativeTabsRegistry.wahpocbase), "");
 	}
 	
 	@SubscribeEvent

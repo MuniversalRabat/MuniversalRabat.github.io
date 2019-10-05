@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 import wahpoc.mod.objects.blocks.BlockBase;
-import wahpoc.mod.tabs.WahPocTab;
+import wahpoc.mod.tabs.CreativeTabsRegistry;
 
 @Mod.EventBusSubscriber
 public class BlockRegistry {
@@ -25,12 +25,15 @@ public class BlockRegistry {
 	
 	@GameRegistry.ObjectHolder("wahpoc:choco_block")
 	public static BlockBase chocoBlock;
+	@GameRegistry.ObjectHolder("wahpoc:wafer_planks")
+	public static BlockBase waferPlanks;
 	
 	@SubscribeEvent
 	public static void registerBlocks(RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 		
-		registerBlock(registry, new BlockBase("choco_block", Material.CAKE, WahPocTab.wahpocblock), "");
+		registerBlock(registry, new BlockBase("choco_block", Material.CAKE, CreativeTabsRegistry.wahpocblock).setLightLevel(15), "");
+		registerBlock(registry, new BlockBase("wafer_planks", Material.WOOD, CreativeTabsRegistry.wahpocblock), "");
 	}
 	
 	@SubscribeEvent
@@ -49,7 +52,7 @@ public class BlockRegistry {
 	
 	private static void registerBlock(IForgeRegistry registry, Block block, String folderLocation) {
 		registry.register(block);
-		itemBlockRegistryMap.put(ItemBlock.getItemFromBlock(block).setRegistryName(block.getRegistryName()), folderLocation);
+		itemBlockRegistryMap.put(new ItemBlock(block).setRegistryName(block.getRegistryName()), folderLocation);
 	}
 	
 	private static void registerItemRender(Item item, String folderLocation) {
