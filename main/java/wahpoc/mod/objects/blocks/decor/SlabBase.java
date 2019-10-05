@@ -25,7 +25,7 @@ public class SlabBase extends BlockSlab{
 	{
 		super(material);
 		setUnlocalizedName(name);
-		setRegistryName("wahpoc:" + name);
+		setRegistryName("wahpoc:" + (isDouble() ? "double_" : "") + name);
 		setCreativeTab(tab);
 		
 		useNeighborBrightness = !isDouble();
@@ -104,14 +104,6 @@ public class SlabBase extends BlockSlab{
 		@Override
 		public boolean isDouble() {
 			return true;
-		}
-		
-		public DoubleSlabBlock registerHalfSlab(IForgeRegistry<Block> registry) {
-			HalfSlabBlock halfSlab = SlabBase.HalfSlabBlock(this.getUnlocalizedName().replace("tile.", ""), this.getRegistryName().toString().replace("wahpoc:double_", ""), this.getMaterial(getDefaultState()));
-			setHalfBlock(halfSlab);
-			registry.register(halfSlab);
-			
-			return this;
 		}
 	}
 	
