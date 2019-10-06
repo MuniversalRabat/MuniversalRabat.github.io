@@ -21,10 +21,10 @@ public abstract class SlabBase extends BlockSlab{
 	public static final PropertyEnum<Variant> VARIANT = PropertyEnum.<Variant>create("variant", Variant.class);
 	private HalfSlabBlock halfBlock;
 
-	public SlabBase(String name, Material material, CreativeTabs tab) {
+	public SlabBase(String name, String registryName, Material material, CreativeTabs tab) {
 		super(material);
 		setUnlocalizedName(name);
-		setRegistryName("wahpoc:" + (isDouble() ? "double_" : "") + name);
+		setRegistryName("wahpoc:" + (isDouble() ? "double_" : "") + registryName);
 		setCreativeTab(tab);
 		
 		useNeighborBrightness = !isDouble();
@@ -96,29 +96,30 @@ public abstract class SlabBase extends BlockSlab{
 	}
 	
 	public static class DoubleSlabBlock extends SlabBase {
-		public DoubleSlabBlock (String name, Material material, CreativeTabs tab) {
-			super(name, material, tab);
+		public DoubleSlabBlock (String name, String registryName, Material material, CreativeTabs tab) {
+			super(name, registryName, material, tab);
 		}
 		
 		@Override
 		public boolean isDouble() {
 			return true;
 		}
-/*		
+		
 		public DoubleSlabBlock registerHalfSlab(IForgeRegistry<Block> registry) {
-			HalfSlabBlock halfSlab = new SlabBase.HalfSlabBlock(this.getUnlocalizedName().replace"tile.", ""), this.getRegistryName().toString().replace("wahpoc:double_",  ""), this.getMaterial(getDefaultState()));
+			HalfSlabBlock halfSlab = new SlabBase.HalfSlabBlock(this.getUnlocalizedName().replace("tile.", ""), this.getRegistryName().toString().replace("wahpoc:double_",  ""), this.getMaterial(getDefaultState()), null);
 			setHalfBlock(halfSlab);
 			registry.register(halfSlab);
 			
 			return this;
 		}
-*/
+
 	}
 
 	
 	public static class HalfSlabBlock extends SlabBase {
-		public HalfSlabBlock(String name, Material material, CreativeTabs tab) {
-			super(name, material, tab);
+		public HalfSlabBlock(String name, String registryName, Material material, CreativeTabs tab) {
+			super(name, registryName, material, tab);
+			
 		}
 		
 		@Override

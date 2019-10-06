@@ -14,6 +14,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 import wahpoc.mod.objects.blocks.BlockBase;
@@ -40,8 +41,8 @@ public class BlockRegistry {
 		
 		registerBlock(registry, new BlockBase("choco_block", Material.CAKE, CreativeTabsRegistry.wahpocblock).setLightLevel(15), "");
 		registerBlock(registry, new BlockBase("wafer_planks", Material.WOOD, CreativeTabsRegistry.wahpocblock), "");
-		//registerBlock(registry, new SlabBase("wafer_slab", Material.WOOD, CreativeTabsRegistry.wahpocblock), "");
-		registerBlock(registry, new StairsBase("wafer_stairs", Material.WOOD, CreativeTabsRegistry.wahpocblock, waferPlanks), "");
+		registerBlock(registry, new SlabBase.DoubleSlabBlock("wafer_slab", "wafer_slab", Material.WOOD, CreativeTabsRegistry.wahpocblock), "");
+		registerBlock(registry, new StairsBase("wafer_stairs", Material.WOOD, CreativeTabsRegistry.wahpocblock, getBlock("wafer_planks")), "");
 	}
 	
 	@SubscribeEvent
@@ -65,5 +66,10 @@ public class BlockRegistry {
 	
 	private static void registerItemRender(Item item, String folderLocation) {
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(new ResourceLocation("wahpoc:" + folderLocation + item.getRegistryName().getResourcePath()), "inventory"));
+	}
+	
+	public static Block getBlock(String registryName)
+	{
+		return ForgeRegistries.BLOCKS.getValue(new ResourceLocation("wahpoc", registryName));
 	}
 }
