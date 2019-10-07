@@ -9,33 +9,33 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistry;
+import wahpoc.mod.tabs.CreativeTabsRegistry;
 
 public abstract class SlabBase extends BlockSlab{
 	public static final PropertyEnum<Variant> VARIANT = PropertyEnum.<Variant>create("variant", Variant.class);
 	private HalfSlabBlock halfBlock;
-
-	public SlabBase(String name, String registryName, Material material, CreativeTabs tab) {
+	
+	public SlabBase(String name, String registryName, Material material) {
 		super(material);
 		setUnlocalizedName(name);
-		setRegistryName("wahpoc:" + (isDouble() ? "double_" : "") + registryName);
-		setCreativeTab(tab);
+		setRegistryName("wahpoc:" + (isDouble() ? "double_" : "") + name);
 		
 		useNeighborBrightness = !isDouble();
 		IBlockState state = blockState.getBaseState().withProperty(VARIANT, Variant.DEFAULT);
 		
 		if (!isDouble()) {
-			state.withProperty(HALF, EnumBlockHalf.BOTTOM);
+			state.withProperty(HALF,  EnumBlockHalf.BOTTOM);
 			halfBlock = (HalfSlabBlock)this;
 		}
 		
 		setDefaultState(state);
+		setCreativeTab(CreativeTabsRegistry.wahpocblock);
 	}
 	
 	@Override
@@ -44,7 +44,7 @@ public abstract class SlabBase extends BlockSlab{
 	}
 	
 	@Override
-	public IProperty<?> getVariantProperty() {
+	public IProperty<?> getVariantProperty(){
 		return VARIANT;
 	}
 	
@@ -72,7 +72,7 @@ public abstract class SlabBase extends BlockSlab{
 		IBlockState state = blockState.getBaseState().withProperty(VARIANT, Variant.DEFAULT);
 		
 		if (!isDouble())
-				state = state.withProperty(HALF, ((meta & 8) != 0) ? EnumBlockHalf.TOP : EnumBlockHalf.BOTTOM);
+			state = state.withProperty(HALF, ((meta & 8) != 0) ? EnumBlockHalf.TOP : EnumBlockHalf.BOTTOM);
 		
 		return state;
 	}
@@ -96,8 +96,8 @@ public abstract class SlabBase extends BlockSlab{
 	}
 	
 	public static class DoubleSlabBlock extends SlabBase {
-		public DoubleSlabBlock (String name, String registryName, Material material, CreativeTabs tab) {
-			super(name, registryName, material, tab);
+		public DoubleSlabBlock(String name, String registryName, Material material) {
+			super(name, registryName, material);
 		}
 		
 		@Override
@@ -106,20 +106,17 @@ public abstract class SlabBase extends BlockSlab{
 		}
 		
 		public DoubleSlabBlock registerHalfSlab(IForgeRegistry<Block> registry) {
-			HalfSlabBlock halfSlab = new SlabBase.HalfSlabBlock(this.getUnlocalizedName().replace("tile.", ""), this.getRegistryName().toString().replace("wahpoc:double_",  ""), this.getMaterial(getDefaultState()), null);
+			HalfSlabBlock halfSlab = new SlabBase.HalfSlabBlock(this.getUnlocalizedName().replace("tile.", ""), this.getRegistryName().toString().replace("wahpoc:double_", ""), this.getMaterial(getDefaultState()));
 			setHalfBlock(halfSlab);
 			registry.register(halfSlab);
 			
 			return this;
 		}
-
 	}
-
 	
 	public static class HalfSlabBlock extends SlabBase {
-		public HalfSlabBlock(String name, String registryName, Material material, CreativeTabs tab) {
-			super(name, registryName, material, tab);
-			
+		public HalfSlabBlock(String name, String registryName, Material material) {
+			super(name, registryName, material);
 		}
 		
 		@Override

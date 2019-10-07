@@ -41,7 +41,7 @@ public class BlockRegistry {
 		
 		registerBlock(registry, new BlockBase("choco_block", Material.CAKE, CreativeTabsRegistry.wahpocblock).setLightLevel(15), "");
 		registerBlock(registry, new BlockBase("wafer_planks", Material.WOOD, CreativeTabsRegistry.wahpocblock), "");
-		registerBlock(registry, new SlabBase.DoubleSlabBlock("wafer_slab", "wafer_slab", Material.WOOD, CreativeTabsRegistry.wahpocblock), "");
+		registerBlock(registry, new SlabBase.DoubleSlabBlock("wafer_slab", "wafer_slab", Material.WOOD), "");
 		registerBlock(registry, new StairsBase("wafer_stairs", Material.WOOD, CreativeTabsRegistry.wahpocblock, getBlock("wafer_planks")), "");
 	}
 	
