@@ -1,9 +1,0 @@
-item.choco_bar.name=Chocolate Bar
-
-tile.choco_block.name=Chocolate Block
-tile.wafer_planks.name=Vanilla Wafer Planks
-tile.wafer_slab.name=Vanilla Wafer Halfslab
-tile.wafer_stairs.name=Vanilla Wafer Stairs
-
-itemGroup.wahpocbase=WAH-pocalypse!
-itemGroup.wahpocblock=WAH-pocalypse Blocks!
