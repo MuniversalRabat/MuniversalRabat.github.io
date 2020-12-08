@@ -1,6 +1,6 @@
 # Welcome to WAH-Candipocalypse!
 
-This is just a working title as I mash together several interests (So far, Animal Crossing, Fallout, and the 'Candy World' motif) in order to learn more about Java Programming in general, and modding Minecraft (1.12.2) specifically!
+This is just a working title as I mash together several interests (So far, Animal Crossing, Fallout, and the 'Candy World' motif) in order to learn more about Java Programming in general, and modding Minecraft (1.16) specifically!
 
 ## Heavily Work-In-Progress
-I am just starting out and have been only learning code for a little less than a month in this bout, although I've had previous experience butting my head into this ring. That said, this is my first serious attempt at learning this, and making it better overall. So with some luck, some tenacity, and a whole lot of screaming at my monitor, I'm sure I'll make something that is... interesting, at least! My first update to this is as of October 2nd, 2019, so here's hoping this won't be too scary.
+I am just starting out and have been learning code on and off for years, and have very much wanted to make a mod of my own for a long time. With that said, this is my second serious attempt at learning this, and making it better overall. So with some luck, some tenacity, and hopefully not much screaming at my monitor, I'm sure I'll make something that is... interesting, at least! I am once more trying my hand at this, and we shall see what comes of the insanity that I bring forth.
