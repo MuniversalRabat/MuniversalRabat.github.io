@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "half=bottom": { "model": "wahpoc:wafer_slab_half" },
-        "half=top": { "model": "wahpoc:wafer_slab_upper" }
-    }
-}
