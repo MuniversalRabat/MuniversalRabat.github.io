@@ -1,7 +1,0 @@
-{
-    "parent": "block/cube_column",
-    "textures": {
-        "end": "wahpoc:blocks/v_wafer_planks_top",
-        "side": "wahpoc:blocks/v_wafer_planks_side"
-    }
-}
